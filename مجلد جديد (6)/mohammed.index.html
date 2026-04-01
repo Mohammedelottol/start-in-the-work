@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> TAYSON NO1</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+   
+</head>
+<body>
+
+    <header>
+        <div class="container navbar">
+            <div class="logo">TAYSON<span>.</span></div>
+            <nav>
+                <a href="#features">المميزات</a>
+                <a href="#about">عن الخدمة</a>
+                <a href="#contact" class="btn-nav">اتصل بنا</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>انقل مشروعك إلى <span class="highlight">المستوى التالي</span></h1>
+            <p>نحن نساعدك على بناء واجهات مستخدم مذهلة، سريعة، ومتجاوبة تضمن لك تحويل الزوار إلى عملاء دائمين.</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">ابدأ الآن مجاناً</a>
+                <a href="#features" class="btn btn-secondary">اكتشف المزيد</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">لماذا تختارنا؟</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="icon">🚀</div>
+                    <h3>سرعة خارقة</h3>
+                    <p>أكواد نظيفة ومحسنة تضمن تحميل صفحتك في أجزاء من الثانية لتجربة مستخدم مثالية.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">📱</div>
+                    <h3>تجاوب كامل</h3>
+                    <p>تصميم مرن يتكيف تلقائياً مع جميع الشاشات من الهواتف الذكية وحتى الشاشات الضخمة.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🎨</div>
+                    <h3>تصميم عصري</h3>
+                    <p>نتبع أحدث صيحات التصميم العالمية لنضمن لعلامتك التجارية التميز والجاذبية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026</p>
+
+    </footer>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script>
+    $(document).ready(function() {
+
+        // 1. حركة التمرير الناعم (Smooth Scroll)
+        $('nav a, .cta-buttons a').on('click', function(event) {
+            if (this.hash !== "" && this.hash !== "#contact") {
+                event.preventDefault();
+                var hash = this.hash;
+
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top - 70 // طرحنا 70 بكسل حتى لا يغطي الهيدر الثابت العناوين
+                }, 800);
+            }
+        });
+
+        // 2. عند الضغط على زر "اتصل بنا" يظهر الرقم
+        $('.btn-nav, .btn-primary').on('click', function(e) {
+            // إذا كان الزر يحولك لـ "اتصل بنا" نفذ الكود التالي
+            if ($(this).text() === "اتصل بنا" || $(this).text() === "ابدأ الآن مجاناً") {
+                e.preventDefault();
+                
+                // ضع رقمك الحقيقي هنا بدلاً من هذا الرقم الافتراضي
+                var myNumber = "+970 598  251 137"; 
+                
+                $(this).fadeOut(100, function() {
+                    $(this).text(myNumber).fadeIn(200);
+                    // تحويل الزر لرابط اتصال مباشر
+                    $(this).attr('href', 'tel:' + myNumber.replace(/\s/g, ''));
+                });
+            }
+        });
+
+    });
+    </script>
+</html>
