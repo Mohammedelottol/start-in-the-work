@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>أوبال للعطور | سحر الأناقة في زجاجة</title>
+  <meta name="description" content="اكتشف تشكيلة العطور الفاخرة من أوبال. عطور فرنسية وشرقية تدوم طويلاً لتمنحك حضوراً لا يُنسى." />
+  <style>
+    :root {
+      --bg: #0d0a07;
+      --bg-2: #1a140e;
+      --bg-3: #261e15;
+      --surface: rgba(255, 255, 255, .05);
+      --stroke: rgba(255, 255, 255, .1);
+      --text: #fdfaf7;
+      --muted: #bdafa2;
+      --gold: #d4af37;
+      --gold-2: #f3db8c;
+      --bronze: #cd7f32;
+      --success: #73f0b0;
+      --shadow: 0 20px 50px rgba(0,0,0,.6);
+      --container: 1100px;
+      --header: 80px;
+      --trans: .4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      color: var(--text);
+      background: 
+        radial-gradient(circle at 90% 10%, rgba(212,175,55,.15), transparent 30%),
+        radial-gradient(circle at 10% 30%, rgba(205,127,50,.12), transparent 30%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 50%, #050403 100%);
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(90%, var(--container)); margin: auto; }
+    .section { padding: 100px 0; position: relative; }
+    
+    .glass {
+      background: linear-gradient(145deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+      border: 1px solid var(--stroke);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: var(--shadow);
+    }
+
+    /* 🌟 Header */
+    header {
+      position: fixed; top: 0; right: 0; left: 0; z-index: 3000;
+      background: rgba(13, 10, 7, 0.4);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-bottom: 1px solid rgba(255,255,255,.03);
+      transition: var(--trans);
+    }
+    header.scrolled {
+      background: rgba(13, 10, 7, 0.95);
+      border-bottom-color: rgba(212,175,55,.1);
+      box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+    .nav {
+      min-height: var(--header);
+      display: flex; align-items: center; justify-content: space-between; gap: 15px;
+    }
+    .logo { font-size: 1.6rem; font-weight: 900; letter-spacing: 2px; color: var(--gold-2); cursor: pointer; }
+    .logo span { color: var(--text); }
+    .nav-links { display: flex; align-items: center; gap: 5px; }
+    .nav-links a {
+      padding: 10px 18px; border-radius: 999px;
+      color: var(--muted); font-weight: 700; transition: var(--trans);
+    }
+    .nav-links a:hover { color: var(--gold-2); background: rgba(255,255,255,.03); }
+    .nav-cta {
+      background: linear-gradient(135deg, var(--gold), #8c6e1a) !important;
+      color: #0d0a07 !important;
+      box-shadow: 0 8px 20px rgba(212,175,55,.3);
+    }
+
+    /* 🚀 Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding-top: var(--header);
+      position: relative;
+    }
+    .hero-grid {
+      display: grid; grid-template-columns: 1.1fr .9fr;
+      gap: 40px; align-items: center;
+    }
+    .eyebrow {
+      display: inline-block; padding: 8px 16px; border-radius: 999px;
+      border: 1px solid rgba(212,175,55,.2); background: rgba(212,175,55,.05);
+      color: var(--gold-2); font-weight: 800; margin-bottom: 15px; font-size: 0.9rem;
+      animation: pulse 2s infinite;
+    }
+    .hero h1 { font-size: clamp(2.2rem, 5vw, 4.5rem); line-height: 1.2; margin: 0 0 15px; font-weight: 900; }
+    .grad {
+      background: linear-gradient(90deg, var(--gold-2), var(--bronze), var(--gold));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero p { margin: 0 0 30px; color: var(--muted); font-size: 1.05rem; line-height: 1.8; max-width: 600px; }
+    .hero-actions { display: flex; gap: 15px; flex-wrap: wrap; }
+    
+    /* 🕹️ Buttons (كثرنا الأزرار وحسنّاها) */
+    .btn {
+      position: relative; overflow: hidden;
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-width: 160px; padding: 14px 28px; border-radius: 999px;
+      font-weight: 800; transition: var(--trans); border: 1px solid transparent; cursor: pointer;
+    }
+    .btn.primary { color: #0d0a07; background: linear-gradient(135deg, var(--gold-2), var(--gold)); box-shadow: 0 10px 20px rgba(212,175,55,.2); }
+    .btn.secondary { border-color: rgba(255,255,255,.1); background: rgba(255,255,255,.03); color: var(--text); }
+    .btn.outline { border-color: var(--gold); color: var(--gold-2); background: transparent; }
+    .btn.sm { padding: 8px 16px; min-width: auto; font-size: 0.85rem; }
+    
+    .btn:hover { transform: translateY(-4px); box-shadow: 0 15px 25px rgba(0,0,0,.3); }
+    .btn.primary:hover { box-shadow: 0 15px 25px rgba(212,175,55,.4); }
+    .btn::after {
+      content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: 0.5s;
+    }
+    .btn:hover::after { left: 100%; }
+
+    /* 🧴 Perfume Bottle (أنيميشن يطفو) */
+    .hero-visual { position: relative; display: flex; justify-content: center; }
+    .bottle {
+      width: 190px; height: 290px; border-radius: 30px 30px 20px 20px;
+      background: linear-gradient(180deg, rgba(212,175,55,.18), rgba(205,127,50,.05));
+      border: 2px solid rgba(212,175,55,.3); position: relative;
+      box-shadow: 0 30px 60px rgba(0,0,0,.5);
+      animation: floating 4s ease-in-out infinite;
+    }
+    .bottle::before {
+      content: ''; position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+      width: 60px; height: 30px; background: var(--gold); border-radius: 10px 10px 5px 5px;
+    }
+    .bottle::after {
+      content: ''; position: absolute; top: -50px; left: 50%; transform: translateX(-50%);
+      width: 40px; height: 20px; background: var(--bg-3); border: 1px solid var(--gold); border-radius: 4px;
+    }
+    .bottle-label {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 120px; height: 85px; background: rgba(13, 10, 7, 0.85);
+      border: 1px solid var(--gold); display: flex; flex-direction: column;
+      align-items: center; justify-content: center; border-radius: 5px;
+    }
+    .bottle-label span:first-child { color: var(--gold-2); font-weight: 900; font-size: 1.1rem; letter-spacing: 1px; }
+    .bottle-label span:last-child { color: var(--muted); font-size: 0.7rem; margin-top: 5px; }
+
+    /* ✨ Cards Grid & Testimonials */
+    .section-head { text-align: center; max-width: 700px; margin: 0 auto 50px; }
+    .section-head .tag { color: var(--gold-2); font-weight: 800; margin-bottom: 10px; display: block; font-size: 0.9rem; }
+    .section-head h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0 0 15px; font-weight: 900; }
+    .section-head p { margin: 0; color: var(--muted); line-height: 1.8; }
+
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+    .card { padding: 35px; border-radius: 24px; transition: var(--trans); text-align: center; display: flex; flex-direction: column; align-items: center; }
+    .card:hover { transform: translateY(-10px) scale(1.02); border-color: rgba(212,175,55,.3); }
+    .card .icon { font-size: 2.5rem; margin-bottom: 15px; display: inline-block; transition: 0.3s; }
+    .card:hover .icon { transform: scale(1.2); }
+    .card h3 { margin: 0 0 10px; font-size: 1.3rem; font-weight: 800; }
+    .card p { margin: 0 0 20px; color: var(--muted); font-size: 0.95rem; line-height: 1.7; }
+
+    /* 📩 Form Section */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .form-box { padding: 40px; border-radius: 28px; }
+    form { display: grid; gap: 15px; }
+    .field {
+      width: 100%; padding: 16px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.05); background: rgba(255,255,255,.02);
+      color: #fff; outline: none; transition: var(--trans); font-family: inherit;
+    }
+    .field:focus { border-color: rgba(212,175,55,.4); background: rgba(255,255,255,.05); }
+    textarea.field { min-height: 120px; resize: vertical; }
+
+    /* 🎞️ Animations Keyframes */
+    @keyframes floating {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(212,175,55, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(212,175,55, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(212,175,55, 0); }
+    }
+
+    /* 🌠 Reveal on Scroll */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity .8s cubic-bezier(0.4, 0, 0.2, 1), transform .8s cubic-bezier(0.4, 0, 0.2, 1); }
+    .reveal.show { opacity: 1; transform: none; }
+
+    /* 👥 Social & Footer */
+    .social-links { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
+    .social-links a { width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--stroke); transition: var(--trans); }
+    .social-links a:hover { border-color: var(--gold); background: rgba(212,175,55,.1); transform: translateY(-3px); }
+    
+    footer { padding: 40px 0; border-top: 1px solid rgba(255,255,255,.03); text-align: center; color: var(--muted); font-size: 0.9rem; }
+
+    @media (max-width: 768px) {
+      .hero-grid, .contact-grid { grid-template-columns: 1fr; text-align: center; }
+      .hero p { margin-inline: auto; }
+      .hero-actions { justify-content: center; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="header">
+    <div class="container nav">
+      <div class="logo" onclick="window.scrollTo(0,0)">OPAL<span>.</span></div>
+      <nav class="nav-links">
+        <a href="#home">الرئيسية</a>
+        <a href="#features">السر</a>
+        <a href="#products">المنتجات</a>
+        <a href="#reviews">الآراء</a>
+        <a href="#contact" class="btn sm nav-cta">طلب سريع</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero section" id="home">
+    <div class="container hero-grid">
+      <div class="reveal">
+        <span class="eyebrow">إصدارات ملكية محدودة</span>
+        <h1>عطور تعزف <span class="grad">ألحان الجاذبية</span></h1>
+        <p>لم نبتكر عطراً جديداً فحسب، بل صممنا لك هالة من الفخامة تدوم طويلاً. خلطات فرنسية فريدة تمنحك حضوراً واثقاً في كل مكان تذهب إليه.</p>
+        <div class="hero-actions">
+          <a href="#contact" class="btn primary">🛍️ اطلب عطرك الآن</a>
+          <a href="#features" class="btn secondary">🔍 اكتشف المكونات</a>
+          <a href="#" class="btn outline sm">🎬 شاهد الفيديو</a>
+        </div>
+      </div>
+      
+      <div class="hero-visual reveal" style="transition-delay: 0.2s;">
+        <div class="bottle">
+          <div class="bottle-label">
+            <span>OPAL NO.1</span>
+            <span>EAU DE PARFUM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="tag">سر التميز</span>
+        <h2>لماذا تختار عطور أوبال؟</h2>
+        <p>جودة المكونات هي التي تصنع الفرق الشاسع في الثبات والانتشار بين الجماهير.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card glass reveal">
+          <div class="icon">⏳</div>
+          <h3>ثبات يدوم 48 ساعة</h3>
+          <p>زيوت عطرية أصلية بتركيز عالي تضمن بقاء الرائحة فواحة معك طوال اليوم.</p>
+          <button class="btn secondary sm">اقرأ المزيد</button>
+        </div>
+        <div class="card glass reveal" style="transition-delay: 0.1s;">
+          <div class="icon">🌿</div>
+          <h3>مكونات طبيعية</h3>
+          <p>مستخلصة من أجود أنواع العود الفاخر والورد الطائفي واللافندر الفرنسي الفخم.</p>
+          <button class="btn secondary sm">اقرأ المزيد</button>
+        </div>
+        <div class="card glass reveal" style="transition-delay: 0.2s;">
+          <div class="icon">👑</div>
+          <h3>رائحة حصرية</h3>
+          <p>تركيبات خاصة تم تطويرها بواسطة خبراء العطور لتمنحك رائحة لا تشبه أحداً.</p>
+          <button class="btn secondary sm">اقرأ المزيد</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="reviews" style="background: rgba(255,255,255, 0.01);">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="tag">تجارب حقيقية</span>
+        <h2>ماذا يقول عملاؤنا؟</h2>
+      </div>
+
+      <div class="grid-3">
+        <div class="card glass reveal">
+          <div style="color: var(--gold);">⭐⭐⭐⭐⭐</div>
+          <p style="margin-top: 10px;">"العطر فخم جداً وثباته فاجأني! ظل بالملابس حتى بعد الغسيل."</p>
+          <h4 style="margin: 0; color: var(--gold-2);">أحمد م.</h4>
+        </div>
+        <div class="card glass reveal" style="transition-delay: 0.1s;">
+          <div style="color: var(--gold);">⭐⭐⭐⭐⭐</div>
+          <p style="margin-top: 10px;">"ريحته مميزة مو مكررة، وكل ما أمشي بمكان يسألوني عنه."</p>
+          <h4 style="margin: 0; color: var(--gold-2);">سارة ع.</h4>
+        </div>
+        <div class="card glass reveal" style="transition-delay: 0.2s;">
+          <div style="color: var(--gold);">⭐⭐⭐⭐⭐</div>
+          <p style="margin-top: 10px;">"سرعة بالتوصيل وتغليف رهيب ينفع للهدايا، شكراً لكم!"</p>
+          <h4 style="margin: 0; color: var(--gold-2);">خالد ب.</h4>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 30px;" class="reveal">
+        <button class="btn outline">عرض كل التقييمات</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container contact-grid">
+      <div class="reveal">
+        <span class="tag">الطلب والتوصيل</span>
+        <h2>احصل على زجاجتك الخاصة اليوم</h2>
+        <p>املأ بياناتك في النموذج، وسيقوم فريقنا بالتواصل معك لتأكيد الطلب. التوصيل سريع ومجاني لجميع المناطق لفترة محدودة.</p>
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+          <a href="#" class="btn primary sm">📞 اتصل بنا</a>
+          <a href="#" class="btn secondary sm">💬 واتساب</a>
+        </div>
+      </div>
+
+      <div class="form-box glass reveal" style="transition-delay: 0.2s;">
+        <h3>طلب زجاجة (100ml)</h3>
+        <form onsubmit="event.preventDefault(); alert('تم استلام طلبك! سنتواصل معك قريباً.');">
+          <input class="field" type="text" placeholder="الاسم الكامل" required />
+          <input class="field" type="tel" placeholder="رقم الهاتف للتواصل" required />
+          <select class="field" required style="color: #bdafa2;">
+            <option value="" disabled selected>اختر نوع العطر</option>
+            <option value="1">أوبال الذهبي (شرقي - ثقيل)</option>
+            <option value="2">أوبال الفضي (فرنسي - منعش)</option>
+          </select>
+          <textarea class="field" placeholder="عنوان التوصيل بالتفصيل..."></textarea>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="btn primary" type="submit" style="flex: 2;">تأكيد الطلب</button>
+            <button class="btn secondary" type="reset" style="flex: 1; min-width: auto;">مسح</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="#">FB</a>
+        <a href="#">IG</a>
+        <a href="#">X</a>
+      </div>
+      <p style="margin-top: 20px;">جميع الحقوق محفوظة © 2026 - OPAL PERFUMES</p>
+    </div>
+  </footer>
+
+  <script>
+    // Header Scroll Effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+
+    // Advanced Reveal on Scroll
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    revealEls.forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
